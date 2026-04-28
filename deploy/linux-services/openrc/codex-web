@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+name="CodeX Proxy Service"
+description="CodeX proxy service"
+command="${CODEX_COMMAND:-/opt/codex-web/codex-web}"
+command_args="-l ${CODEX_LISTEN_ADDR:-127.0.0.1:8000} -f ${CODEX_CONFIG_FILE:-/etc/codex-web/conf.yml}"
+command_background="yes"
+pidfile="${CODEX_PIDFILE:-/run/codex-web.pid}"
+directory="${CODEX_WORKDIR:-/opt/codex-web}"
+command_user="${CODEX_USER:-root}:${CODEX_GROUP:-root}"
+
+depend() {
+    need net
+}
+
+start_pre() {
+    checkpath --directory --owner ${CODEX_USER:-root}:${CODEX_GROUP:-root} /run
+}

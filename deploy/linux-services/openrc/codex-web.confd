@@ -1,0 +1,7 @@
+CODEX_COMMAND=/opt/codex-web/codex-web
+CODEX_LISTEN_ADDR=127.0.0.1:8000
+CODEX_CONFIG_FILE=/etc/codex-web/conf.yml
+CODEX_WORKDIR=/opt/codex-web
+CODEX_PIDFILE=/run/codex-web.pid
+CODEX_USER=root
+CODEX_GROUP=root

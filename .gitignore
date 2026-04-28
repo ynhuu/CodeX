@@ -1,0 +1,6 @@
+bin/
+session/
+conf/
+makefile_bak
+.idea
+.DS_Store

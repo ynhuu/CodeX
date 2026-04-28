@@ -1,0 +1,18 @@
+[Unit]
+Description=CodeX Proxy Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=codex
+Group=codex
+WorkingDirectory=/opt/codex-web
+EnvironmentFile=-/etc/default/codex-web
+ExecStart=/bin/sh -c 'exec /opt/codex-web/codex-web -l "${CODEX_LISTEN_ADDR:-127.0.0.1:8000}" -f "${CODEX_CONFIG_FILE:-/etc/codex-web/conf.yml}"'
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
